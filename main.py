@@ -15,7 +15,7 @@ maxwell = stats.maxwell
 
 fig1, axs = plt.subplots(2, 2, sharey=True)
 
-molecule = 'c4h4'
+molecule = 'b6h6'
 kind = ['cartesian', 'modes']
 temperature = [100, 200, 300, 400]
 files = []
@@ -84,7 +84,6 @@ for n in list(range(0, 8, 2)):
 # plt.title('Histogram of :')
 
 plt.legend()
-plt.show()
-# plt.savefig(molecule+'.png', dpi=300)
-quit()
+# plt.show()
+plt.savefig(molecule+'.png', dpi=300)
 # plt.show()
