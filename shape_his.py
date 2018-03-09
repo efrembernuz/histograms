@@ -7,17 +7,20 @@ def nonblank_lines(f):
         if line:
             yield line
 
+fig1, axs = plt.subplots(2, 3, sharey=True)
 
-molecule = 'cyclohexane'
+
+molecule = 'p4'
 # shape_measure = ['HP-6', 'PPY-6', 'OC-6', 'TPR-6', 'JPPY-6']
 shape_measure = ['A', 'B']
-kind = ['cartesian', 'modes']
-temperature = [100, 200, 300, 400]
+kind = ['cartesian'] #, 'modes']
+temperature = [400] #[100, 200, 300, 400]
 files = []
+steps = [10000, 15000, 20000, 25000, 30000, 35000]
 
-for temp in temperature:
+for step in steps:
     for i in kind:
-        files.append(molecule+'_'+str(temp)+'_'+i+'_shape')
+        files.append(molecule+'_400_'+str(step)+'_'+i+'_shape')
 shape1 = [[] for i in range(len(files))]
 shape2 = [[] for j in range(len(files))]
 shape3 = [[] for k in range(len(files))]
@@ -38,7 +41,21 @@ for n, file in enumerate(files):
                 # shape5[n].append(float(line.split()[4]))
 
 bins = 10
-n_mostres = 20000
+n_mostres = 2
+x, z = 0, 0
+for n in range(len(shape1)):
+    print(shape1[n])
+    axs[x, z].hist(shape1[n][int(len(shape1[n])/2):], bins, normed=True, label='cartesian', fc=(0, 0, 1, 0.5))
+
+    z += 1
+    if z == 3:
+        x += 1
+        z = 0
+
+# plt.show()
+
+plt.show()
+quit()
 
 x, y = 0, 0
 fig1, axs1 = plt.subplots(2, 2, sharey=True)

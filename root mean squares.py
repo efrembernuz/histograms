@@ -11,10 +11,10 @@ def nonblank_lines(f):
 
 molecule = 'cyclohexane'
 kind = ['cartesian', 'modes']
-temperature = [400]
+temperature = [200]
 files = []
 bins = 10
-n_max = 5000
+n_max = 15000
 
 for temp in temperature:
     for i in kind:
